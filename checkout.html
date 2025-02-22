@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - EmpowerEase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .checkout-section {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 20px;
+            flex: 1;
+            transition: transform 0.3s;
+        }
+
+        .checkout-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #007BFF;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 3px;
+            background-color: #007BFF;
+            margin-top: 5px;
+            border-radius: 5px;
+        }
+
+        /* Form and Input Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        /* Order Summary */
+        .order-summary {
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            width: 35%;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .item:last-child {
+            border-bottom: none;
+        }
+
+        .total-amount {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #007BFF;
+        }
+
+        /* Payment Button */
+        .checkout-btn {
+            background-color: #28a745;
+            color: #fff;
+            font-weight: 600;
+            padding: 15px;
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 20px;
+        }
+
+        .checkout-btn:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        /* Coupon Button */
+        .coupon-btn {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .coupon-btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Shipping Address Section -->
+    <div class="checkout-section" style="flex: 1 1 60%;">
+        <h2 class="section-title">Shipping Address</h2>
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" id="address" placeholder="Enter your address" required>
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" id="city" placeholder="Enter your city" required>
+        </div>
+        <div class="form-group">
+            <label for="state">State</label>
+            <select id="state" required>
+                <option value="">Select your state</option>
+                <option value="California">California</option>
+                <option value="Texas">Texas</option>
+                <option value="New York">New York</option>
+                <!-- Add more states as options -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="zip">Zip Code</label>
+            <input type="text" id="zip" placeholder="Enter your zip code" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" placeholder="Enter your phone number" required>
+        </div>
+    </div>
+
+    <!-- Order Summary Section -->
+  
+
+<div class="container">
+    <!-- Payment & Offers Section -->
+    <div class="checkout-section" style="flex: 1 1 100%;">
+        <h2 class="section-title">Checkout Details</h2>
+
+        <!-- Payment Method Options -->
+        <div class="form-group">
+            <label for="payment">Select Payment Method</label>
+            <select id="payment" required>
+                <option value="credit">Credit/Debit Card</option>
+                <option value="netbanking">Net Banking</option>
+                <option value="upi">UPI</option>
+                <option value="cod">Cash on Delivery</option>
+            </select>
+        </div>
+
+        <!-- Delivery Date Options -->
+        <h3 class="section-title">Select Delivery Date</h3>
+        <div class="form-group">
+            <label for="delivery-date">Choose Delivery Option</label>
+            <select id="delivery-date" required>
+                <option value="standard">Standard Delivery - 5-7 Days</option>
+                <option value="express">Express Delivery - 2-3 Days (₹100.00)</option>
+            </select>
+        </div>
+
+        <!-- Apply Coupons -->
+        <h3 class="section-title">Offers & Coupons</h3>
+        <div class="form-group" style="display: flex; align-items: center;">
+            <input type="text" placeholder="Enter Coupon Code" style="padding: 10px; width: 70%; margin-right: 10px; border: 1px solid #ddd; border-radius: 10px;">
+            <button class="coupon-btn">Apply Coupon</button>
+        </div>
+
+        <!-- Place Order Button -->
+        <button class="checkout-btn" onclick="location.href='thankyou.html'">Place Order</button>
+
+    </div>
+</div>
+
+</body>
+</html>

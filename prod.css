@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Lighter background color */
+    color: #333; /* Updated text color */
+}
+
+header {
+    background-color: #6ec1e4; /* Light blue */
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #fff; /* White text */
+}
+
+h2 {
+    margin: 20px 0;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.product-card {
+    background-color: #ffffff; /* White background for product cards */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.2s; /* Smooth hover effect */
+}
+
+.product-card:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px; /* Rounded corners for images */
+}
+
+.btn {
+    background-color: #ff6f61; /* Coral color for buttons */
+    border: none;
+    border-radius: 5px;
+    color: #fff; /* White text on buttons */
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 15px;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth button hover effect */
+}
+
+.btn:hover {
+    background-color: #ff4f3c; /* Darker coral on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+footer {
+    background-color: #333; /* Dark background for footer */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative; /* Footer will stay at the bottom */
+    bottom: 0;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .product-list {
+        flex-direction: column; /* Stack products on smaller screens */
+        align-items: center;
+    }
+}

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>EmpowerEase | About Us</title>
+    <style>
+        /* Global Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+            color: #333;
+        }
+
+        .wrapper {
+            width: 80%;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            text-align: center;
+            color: #4b0082;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #4b0082;
+            margin-top: 20px;
+            transition: color 0.3s;
+        }
+
+        h2:hover {
+            color: #764ba2; /* Change color on hover */
+        }
+
+        p {
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        /* Team Section */
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .team-member {
+            flex: 0 0 48%;
+            margin-bottom: 20px;
+            background: #f1f1f1;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            background: #e0e0e0; /* Change background color on hover */
+        }
+
+        .team-member img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Social Media Section */
+        .social-media {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .social-media a {
+            margin: 0 10px;
+            font-size: 24px;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        .social-media a:hover {
+            color: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>About EmpowerEase</h1>
+        <p>Welcome to Empower Ease, your go-to online platform for a seamless shopping experience. We believe in empowering our customers by providing a wide range of quality products at your fingertips. Our goal is to make your shopping experience easy and enjoyable.</p>
+
+        <h2>Our Mission</h2>
+        <p>At Empower Ease, our mission is to simplify the shopping process. We aim to provide our customers with exceptional service and a diverse selection of products, ensuring you find exactly what you need without any hassle.</p>
+
+        <h2>Our Values</h2>
+        <p>We stand by our core values:</p>
+        <ul>
+            <li><strong>Customer Satisfaction:</strong> We prioritize our customers' needs and feedback.</li>
+            <li><strong>Quality Products:</strong> We curate high-quality products from trusted vendors.</li>
+            <li><strong>Integrity:</strong> We operate with honesty and transparency.</li>
+            <li><strong>Innovation:</strong> We continuously seek to improve our services and offerings.</li>
+        </ul>
+
+        <h2>Meet Our Team</h2>
+        <div class="team">
+            <div class="team-member">
+                <img src="meceo.png" alt="Team Member 1">
+                <h3>Aayush Sinha</h3>
+                <p>CEO & Founder</p>
+            </div>
+            <div class="team-member">
+                <img src="Images/oiyo.jpg" alt="Team Member 4">
+                <h3>Aritra Roy</h3>
+                <p>Chief Technical Officer</p>
+            </div>
+            <div class="team-member">
+                <img src="Images/pranay.jpg" alt="Team Member 3">
+                <h3>Pranay </h3>
+                <p>Marketing Director</p>
+            </div>
+            <div class="team-member">
+                <img src="Images/ishan.jpg" alt="Team Member 4">
+                <h3>Sayed Ishan</h3>
+                <p>Chief Opertaing Officer</p>
+            </div>
+        </div>
+
+        <h2>Join Us on Our Journey</h2>
+        <p>We invite you to explore our products and join us on this journey. Together, we can create a more empowered shopping experience!</p>
+
+        <h2>Connect With Us</h2>
+        <div class="social-media">
+            <a href="https://www.facebook.com" target="_blank"><i class="bx bxl-facebook"></i></a>
+            <a href="https://www.twitter.com" target="_blank"><i class="bx bxl-twitter"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="bx bxl-instagram"></i></a>
+            <a href="https://www.linkedin.com" target="_blank"><i class="bx bxl-linkedin"></i></a>
+        </div>
+    </div>
+</body>
+</html>

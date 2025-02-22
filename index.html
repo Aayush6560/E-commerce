@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EmpowerEase</title>
+  <style>
+    /* General reset for margin and padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f7f8fa; /* Light background */
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: #0288d1; /* Header color */
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: slideInDown 0.8s ease-in-out;
+    }
+
+    .logo {
+      font-size: 35px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-controls button {
+      padding: 10px 15px;
+      background-color: #ffffff; /* Button background */
+      color: #0288d1; /* Button text color */
+      border: 2px solid #0288d1;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .nav-controls button:hover {
+      background-color: #0288d1; /* Button hover background */
+      color: #ffffff; /* Button hover text color */
+      transform: scale(1.1);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('Images/background.jpg'); /* Normal image background */
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .hero-content {
+      animation: fadeInUp 1.5s ease;
+    }
+
+    .hero-section h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      color: #009688; /* Changed heading color to soft teal */
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .hero-section p {
+      font-size: 1.2rem;
+      color: #535252; /* Changed paragraph color to light gray */
+      margin-bottom: 20px;
+      animation: slideInLeft 1.5s ease;
+    }
+
+    .hero-section a {
+      color: #0288d1;
+      padding: 10px 20px;
+      background-color: #fff; /* Link background */
+      border: 2px solid #0288d1; /* Link border */
+      text-decoration: none;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      display: inline-block;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      animation: slideInRight 1.5s ease;
+    }
+
+    .hero-section a:hover {
+      background-color: #0288d1; /* Link hover background */
+      color: #fff; /* Link hover text color */
+      transform: scale(1.05);
+    }
+
+    /* Keyframes for animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInLeft {
+      from { transform: translateX(-100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes slideInRight {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideInDown {
+      from { transform: translateY(-100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Footer */
+    footer {
+      background-color: #0288d1; /* Footer color */
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      animation: fadeIn 2s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">EmpowerEase</div>
+    <div class="nav-controls">
+      <button onclick="location.href='about.html'">About</button>
+      <button onclick="location.href='products.html'">Products</button>
+      <button onclick="location.href='cart.html'">Cart</button>
+      <button onclick="location.href='contact.html'">Contact Us</button>
+      <button onclick="location.href='help.html'">Help</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Welcome to EmpowerEase</h1>
+      <p>Your Comfort,Our Priority</p>
+      <p>Your trusted source for accessibility products tailored for everyone.</p>  
+      <p>Empowering independence with tools and products designed to enhance comfort and convenience.</p>
+      <a href="products.html">Explore Products</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 EmpowerEase. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

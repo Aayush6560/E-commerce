@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - EmpowerEase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@400;500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            width: 100%;
+        }
+
+        .logo {
+            font-family: 'Kaisei Tokumin', serif;
+            font-size: 2rem;
+            color: #76b852;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #333;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #007BFF;
+        }
+
+        /* Header Section */
+        #header {
+            background: linear-gradient(to right, #76b852, #8DC26F);
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .header-content h1 {
+            font-size: 3rem;
+            color: white;
+            animation: slideIn 1.5s ease-out forwards;
+        }
+
+        .header-content p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: white;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out forwards 0.5s;
+        }
+
+        /* Slide In Animation */
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Fade In Up Animation */
+        @keyframes fadeInUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 60px 20px;
+            background: #ffffff;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            margin-top: 40px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 40px;
+            animation: fadeIn 1.5s forwards;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            position: relative;
+            opacity: 0;
+            animation: fadeInCard 0.5s ease forwards;
+        }
+
+        /* Fade In Card Animation */
+        @keyframes fadeInCard {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .product-card h3 {
+            margin: 15px 0;
+        }
+
+        .btn {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Notification Message */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #28a745; /* Green */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: none; /* Hidden by default */
+            animation: slideDown 0.5s ease-in-out forwards;
+            z-index: 100;
+        }
+
+        /* Slide Down Animation */
+        @keyframes slideDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Fade Out Animation */
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Notification Message -->
+    <div class="notification" id="notification"></div>
+
+    <!-- Navbar -->
+    <header>
+        <div class="logo">EmpowerEase</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Header Section -->
+    <header id="header">
+        <div class="header-content">
+            <h1>Explore Our Products</h1>
+            <p>Your one-stop destination for all essentials.</p>
+        </div>
+    </header>
+
+    <!-- Products Section -->
+    <section id="products" class="products-section">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="product-grid">
+            <!-- Product Cards -->
+            <div class="product-card">
+                <img src="Images/wheelchair.webp" alt="WHEELCHAIR">
+                <h3>Wheelchair</h3>
+                <p>₹12,000.00</p>
+                <button class="btn add-to-cart" data-name="Wheelchair" data-price="12000.00">Add to Cart</button>
+            </div>
+            
+            <div class="product-card">
+                <img src="Images/walker.jpg" alt="Walker">
+                <h3>Walker</h3>
+                <p>₹5,000.00</p>
+                <button class="btn add-to-cart" data-name="Walker" data-price="5000.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/cane.jpg" alt="Cane">
+                <h3>Cane</h3>
+                <p>₹1,000.00</p>
+                <button class="btn add-to-cart" data-name="Cane" data-price="1000.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/wheelchair-4.jpg" alt="Wheelchair - Advanced">
+                <h3>Advanced Wheelchair</h3>
+                <p>₹20,000.00</p>
+                <button class="btn add-to-cart" data-name="Advanced Wheelchair" data-price="20000.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/walker-2.jpg" alt="Walker - Advanced">
+                <h3>Advanced Walker</h3>
+                <p>₹8,000.00</p>
+                <button class="btn add-to-cart" data-name="Advanced Walker" data-price="8000.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/crutches.jpg" alt="Crutches">
+                <h3>Crutches</h3>
+                <p>₹1,500.00</p>
+                <button class="btn add-to-cart" data-name="Crutches" data-price="1500.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/bed.jpg" alt="Adjustable Bed">
+                <h3>Adjustable Bed</h3>
+                <p>₹25,000.00</p>
+                <button class="btn add-to-cart" data-name="Adjustable Bed" data-price="25000.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/shower-chair.jpg" alt="Shower Chair">
+                <h3>Shower Chair</h3>
+                <p>₹4,000.00</p>
+                <button class="btn add-to-cart" data-name="Shower Chair" data-price="4000.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/commode.jpg" alt="Commode Chair">
+                <h3>Commode Chair</h3>
+                <p>₹6,000.00</p>
+                <button class="btn add-to-cart" data-name="Commode Chair" data-price="6000.00">Add to Cart</button>
+            </div>
+            <!-- Adding 30 more products -->
+            <div class="product-card">
+                <img src="Images/medication-organizer.jpg" alt="Medication Organizer">
+                <h3>Medication Organizer</h3>
+                <p>₹800.00</p>
+                <button class="btn add-to-cart" data-name="Medication Organizer" data-price="800.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/bedside-table.jpg" alt="Bedside Table">
+                <h3>Bedside Table</h3>
+                <p>₹3,500.00</p>
+                <button class="btn add-to-cart" data-name="Bedside Table" data-price="3500.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/mobility-scooter.jpg" alt="Mobility Scooter">
+                <h3>Mobility Scooter</h3>
+                <p>₹30,000.00</p>
+                <button class="btn add-to-cart" data-name="Mobility Scooter" data-price="30000.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/reaching-aid.jpg" alt="Reaching Aid">
+                <h3>Reaching Aid</h3>
+                <p>₹1,200.00</p>
+                <button class="btn add-to-cart" data-name="Reaching Aid" data-price="1200.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/therapeutic-mat.jpg" alt="Therapeutic Mat">
+                <h3>Therapeutic Mat</h3>
+                <p>₹2,500.00</p>
+                <button class="btn add-to-cart" data-name="Therapeutic Mat" data-price="2500.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/safety-belt.jpg" alt="Safety Belt">
+                <h3>Safety Belt</h3>
+                <p>₹700.00</p>
+                <button class="btn add-to-cart" data-name="Safety Belt" data-price="700.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/supportive-cushion.jpg" alt="Supportive Cushion">
+                <h3>Supportive Cushion</h3>
+                <p>₹1,800.00</p>
+                <button class="btn add-to-cart" data-name="Supportive Cushion" data-price="1800.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/bathing-aid.jpg" alt="Bathing Aid">
+                <h3>Bathing Aid</h3>
+                <p>₹2,200.00</p>
+                <button class="btn add-to-cart" data-name="Bathing Aid" data-price="2200.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/foot-rest.jpg" alt="Foot Rest">
+                <h3>Foot Rest</h3>
+                <p>₹900.00</p>
+                <button class="btn add-to-cart" data-name="Foot Rest" data-price="900.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/bedside-commode.jpg" alt="Bedside Commode">
+                <h3>Bedside Commode</h3>
+                <p>₹5,500.00</p>
+                <button class="btn add-to-cart" data-name="Bedside Commode" data-price="5500.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/sitting-aid.jpg" alt="Sitting Aid">
+                <h3>Sitting Aid</h3>
+                <p>₹4,000.00</p>
+                <button class="btn add-to-cart" data-name="Sitting Aid" data-price="4000.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/folding-walker.jpg" alt="Folding Walker">
+                <h3>Folding Walker</h3>
+                <p>₹6,500.00</p>
+                <button class="btn add-to-cart" data-name="Folding Walker" data-price="6500.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/dementia-friendly-clock.jpg" alt="Dementia Friendly Clock">
+                <h3>Dementia Friendly Clock</h3>
+                <p>₹1,600.00</p>
+                <button class="btn add-to-cart" data-name="Dementia Friendly Clock" data-price="1600.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/cushioned-shower-mat.jpg" alt="Cushioned Shower Mat">
+                <h3>Cushioned Shower Mat</h3>
+                <p>₹1,200.00</p>
+                <button class="btn add-to-cart" data-name="Cushioned Shower Mat" data-price="1200.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/mobility-aid.jpg" alt="Mobility Aid">
+                <h3>Mobility Aid</h3>
+                <p>₹10,000.00</p>
+                <button class="btn add-to-cart" data-name="Mobility Aid" data-price="10000.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/hairdryer.jpg" alt="Hairdryer for Seniors">
+                <h3>Hairdryer for Seniors</h3>
+                <p>₹2,000.00</p>
+                <button class="btn add-to-cart" data-name="Hairdryer for Seniors" data-price="2000.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/pill-dispenser.jpg" alt="Automatic Pill Dispenser">
+                <h3>Automatic Pill Dispenser</h3>
+                <p>₹5,000.00</p>
+                <button class="btn add-to-cart" data-name="Automatic Pill Dispenser" data-price="5000.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/large-button-phone.jpg" alt="Large Button Phone">
+                <h3>Large Button Phone</h3>
+                <p>₹1,200.00</p>
+                <button class="btn add-to-cart" data-name="Large Button Phone" data-price="1200.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/jigsaw-puzzle.jpg" alt="Jigsaw Puzzle for Seniors">
+                <h3>Jigsaw Puzzle for Seniors</h3>
+                <p>₹900.00</p>
+                <button class="btn add-to-cart" data-name="Jigsaw Puzzle for Seniors" data-price="900.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/reading-light.jpg" alt="Reading Light">
+                <h3>Reading Light</h3>
+                <p>₹1,500.00</p>
+                <button class="btn add-to-cart" data-name="Reading Light" data-price="1500.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/memory-game.jpg" alt="Memory Game">
+                <h3>Memory Game</h3>
+                <p>₹800.00</p>
+                <button class="btn add-to-cart" data-name="Memory Game" data-price="800.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/vision-aid.jpg" alt="Vision Aid">
+                <h3>Vision Aid</h3>
+                <p>₹1,700.00</p>
+                <button class="btn add-to-cart" data-name="Vision Aid" data-price="1700.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/anti-slip-mat.jpg" alt="Anti-Slip Mat">
+                <h3>Anti-Slip Mat</h3>
+                <p>₹600.00</p>
+                <button class="btn add-to-cart" data-name="Anti-Slip Mat" data-price="600.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/large-print-calendar.jpg" alt="Large Print Calendar">
+                <h3>Large Print Calendar</h3>
+                <p>₹900.00</p>
+                <button class="btn add-to-cart" data-name="Large Print Calendar" data-price="900.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/fidget-spinner.jpg" alt="Fidget Spinner">
+                <h3>Fidget Spinner</h3>
+                <p>₹300.00</p>
+                <button class="btn add-to-cart" data-name="Fidget Spinner" data-price="300.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/gardening-tools.jpg" alt="Gardening Tools for Seniors">
+                <h3>Gardening Tools for Seniors</h3>
+                <p>₹1,500.00</p>
+                <button class="btn add-to-cart" data-name="Gardening Tools for Seniors" data-price="1500.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/puzzle-mat.jpg" alt="Puzzle Mat">
+                <h3>Puzzle Mat</h3>
+                <p>₹800.00</p>
+                <button class="btn add-to-cart" data-name="Puzzle Mat" data-price="800.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/dementia-friendly-game.jpg" alt="Dementia Friendly Game">
+                <h3>Dementia Friendly Game</h3>
+                <p>₹1,500.00</p>
+                <button class="btn add-to-cart" data-name="Dementia Friendly Game" data-price="1500.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/chair-lift.jpg" alt="Chair Lift">
+                <h3>Chair Lift</h3>
+                <p>₹50,000.00</p>
+                <button class="btn add-to-cart" data-name="Chair Lift" data-price="50000.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/wheelchair-ramp.jpg" alt="Wheelchair Ramp">
+                <h3>Wheelchair Ramp</h3>
+                <p>₹15,000.00</p>
+                <button class="btn add-to-cart" data-name="Wheelchair Ramp" data-price="15000.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/walker-wheels.jpg" alt="Walker with Wheels">
+                <h3>Walker with Wheels</h3>
+                <p>₹7,000.00</p>
+                <button class="btn add-to-cart" data-name="Walker with Wheels" data-price="7000.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/hand-grip.jpg" alt="Hand Grip">
+                <h3>Hand Grip</h3>
+                <p>₹500.00</p>
+                <button class="btn add-to-cart" data-name="Hand Grip" data-price="500.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/foam-mat.jpg" alt="Foam Mat">
+                <h3>Foam Mat</h3>
+                <p>₹1,200.00</p>
+                <button class="btn add-to-cart" data-name="Foam Mat" data-price="1200.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/talking-clock.jpg" alt="Talking Clock">
+                <h3>Talking Clock</h3>
+                <p>₹1,800.00</p>
+                <button class="btn add-to-cart" data-name="Talking Clock" data-price="1800.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/weighted-blanket.jpg" alt="Weighted Blanket">
+                <h3>Weighted Blanket</h3>
+                <p>₹3,000.00</p>
+                <button class="btn add-to-cart" data-name="Weighted Blanket" data-price="3000.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/floor-lamp.jpg" alt="Floor Lamp for Seniors">
+                <h3>Floor Lamp for Seniors</h3>
+                <p>₹2,200.00</p>
+                <button class="btn add-to-cart" data-name="Floor Lamp for Seniors" data-price="2200.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/seniors-phone.jpg" alt="Seniors Phone">
+                <h3>Seniors Phone</h3>
+                <p>₹1,000.00</p>
+                <button class="btn add-to-cart" data-name="Seniors Phone" data-price="1000.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/long-handle-knife.jpg" alt="Long Handle Knife">
+                <h3>Long Handle Knife</h3>
+                <p>₹900.00</p>
+                <button class="btn add-to-cart" data-name="Long Handle Knife" data-price="900.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/large-print-dictionary.jpg" alt="Large Print Dictionary">
+                <h3>Large Print Dictionary</h3>
+                <p>₹1,200.00</p>
+                <button class="btn add-to-cart" data-name="Large Print Dictionary" data-price="1200.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/grab-bar.jpg" alt="Grab Bar">
+                <h3>Grab Bar</h3>
+                <p>₹700.00</p>
+                <button class="btn add-to-cart" data-name="Grab Bar" data-price="700.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/electric-can-opener.jpg" alt="Electric Can Opener">
+                <h3>Electric Can Opener</h3>
+                <p>₹1,500.00</p>
+                <button class="btn add-to-cart" data-name="Electric Can Opener" data-price="1500.00">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Images/lap-desk.jpg" alt="Lap Desk">
+                <h3>Lap Desk</h3>
+                <p>₹1,200.00</p>
+                <button class="btn add-to-cart" data-name="Lap Desk" data-price="1200.00">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function () {
+                const productName = this.getAttribute('data-name');
+                const productPrice = parseFloat(this.getAttribute('data-price'));
+                
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.push({ name: productName, price: productPrice });
+                localStorage.setItem('cart', JSON.stringify(cart));
+                
+                const notification = document.getElementById('notification');
+                notification.textContent = `${productName} added to cart!`;
+                notification.style.display = 'block';
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
+
